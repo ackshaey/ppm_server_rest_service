@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get 'api/projecttasks'
   get 'api/todotasks/:id' => 'api#todotask'
   get 'api/projecttasks/:id' => 'api#projecttask'
+  get 'api/todotasks_auth'
+  get 'api/projecttasks_auth'
+  get 'api/todotasks/:id' => 'api#todotask_auth'
+  get 'api/projecttasks/:id' => 'api#projecttask_auth'
 
 
   resources :project_tasks
