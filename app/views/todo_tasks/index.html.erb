@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Todo Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task name</th>
+      <th>Project name</th>
+      <th>Percent complete</th>
+      <th>Start date</th>
+      <th>Finish date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_tasks.each do |todo_task| %>
+      <tr>
+        <td><%= todo_task.task_name %></td>
+        <td><%= todo_task.project_name %></td>
+        <td><%= todo_task.percent_complete %></td>
+        <td><%= todo_task.start_date %></td>
+        <td><%= todo_task.finish_date %></td>
+        <td><%= link_to 'Show', todo_task %></td>
+        <td><%= link_to 'Edit', edit_todo_task_path(todo_task) %></td>
+        <td><%= link_to 'Destroy', todo_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Todo task', new_todo_task_path %>

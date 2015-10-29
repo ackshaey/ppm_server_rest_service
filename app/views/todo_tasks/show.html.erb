@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Task name:</strong>
+  <%= @todo_task.task_name %>
+</p>
+
+<p>
+  <strong>Project name:</strong>
+  <%= @todo_task.project_name %>
+</p>
+
+<p>
+  <strong>Percent complete:</strong>
+  <%= @todo_task.percent_complete %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @todo_task.start_date %>
+</p>
+
+<p>
+  <strong>Finish date:</strong>
+  <%= @todo_task.finish_date %>
+</p>
+
+<%= link_to 'Edit', edit_todo_task_path(@todo_task) %> |
+<%= link_to 'Back', todo_tasks_path %>
