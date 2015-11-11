@@ -4,12 +4,12 @@ class ApiController < ApplicationController
 
   def todotasks
   	@tasks = TodoTask.all
-  	render :json => @tasks.to_json and return
+  	render :json => { :todotasks => @tasks.to_json} and return
   end
 
   def projecttasks
   	@tasks = ProjectTask.all
-  	render :json => @tasks.to_json and return
+  	render :json => { :projecttasks => @tasks.to_json} and return
   end
 
   def todotask
@@ -26,12 +26,12 @@ class ApiController < ApplicationController
 
   def todotasks_auth
     @tasks = TodoTask.all
-    render :json => @tasks.to_json and return
+    render :json => { :todotasks => @tasks.to_json} and return
   end
 
   def projecttasks_auth
     @tasks = ProjectTask.all
-    render :json => @tasks.to_json and return
+    render :json => { :projecttasks => @tasks.to_json} and return
   end
 
   def todotask_auth
