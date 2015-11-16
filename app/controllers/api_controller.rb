@@ -3,12 +3,12 @@ class ApiController < ApplicationController
   http_basic_authenticate_with name: "connor.horton", password: "Welcome1", only: [:todotasks_auth, :projecttasks_auth, :todotask_auth, :projecttask_auth]
 
   def todotasks
-  	@tasks = TodoTask.select('id, task_name, project_name, percent_complete')
+  	@tasks = TodoTask.select('id, task_name, project_name, percent_complete, start_date, finish_date')
   	render :json => { :todotasks => @tasks} and return
   end
 
   def projecttasks
-  	@tasks = ProjectTask.select('id, task_name, project_name, percent_complete')
+  	@tasks = ProjectTask.select('id, task_name, project_name, percent_complete, start_date, finish_date')
   	render :json => { :projecttasks => @tasks} and return
   end
 
