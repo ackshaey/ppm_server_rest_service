@@ -5,13 +5,21 @@ Rails.application.routes.draw do
 
   get 'page/index'
 
+  # Todo Tasks
   get 'api/todotasks'
-  get 'api/projecttasks'
+  post 'api/todotasks' => 'api#create_todotask'
   get 'api/todotasks/:id' => 'api#todotask'
-  get 'api/projecttasks/:id' => 'api#projecttask'
+  put 'api/todotasks/:id' => 'api#update_todotask'
+  delete 'api/todotasks/:id' => 'api#delete_todotask'
+
   get 'api/todotasks_auth'
-  get 'api/projecttasks_auth'
   get 'api/todotasks/:id' => 'api#todotask_auth'
+
+  # Project Tasks
+  
+  get 'api/projecttasks'
+  get 'api/projecttasks/:id' => 'api#projecttask'
+  get 'api/projecttasks_auth'
   get 'api/projecttasks/:id' => 'api#projecttask_auth'
 
 
