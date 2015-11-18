@@ -4,12 +4,12 @@ class ApiController < ApplicationController
   skip_before_action :verify_authenticity_token
   
   def todotasks
-  	@tasks = TodoTask.select('id, task_name, project_name, percent_complete, start_date, finish_date')
+  	@tasks = TodoTask.select('id, task_name, project_name, percent_complete, start_date, finish_date').order('created_at desc')
   	render :json => { :todotasks => @tasks} and return
   end
 
   def projecttasks
-  	@tasks = ProjectTask.select('id, task_name, project_name, percent_complete, start_date, finish_date')
+  	@tasks = ProjectTask.select('id, task_name, project_name, percent_complete, start_date, finish_date').order('created_at desc')
   	render :json => { :projecttasks => @tasks} and return
   end
 
@@ -23,6 +23,8 @@ class ApiController < ApplicationController
     name = params[:task_name]
     @todo_task = TodoTask.new
     @todo_task.task_name = name
+    @todo_task.project_name = "To-do Task"
+    @todo_task.percent_complete = 0
     @todo_task.save!
     render :json => @todo_task.to_json and return
   end
@@ -64,12 +66,12 @@ class ApiController < ApplicationController
   end
 
   def todotasks_auth
-    @tasks = TodoTask.all
+    @tasks = TodoTask.select('id, task_name, project_name, percent_complete, start_date, finish_date').order('created_at desc')
     render :json => { :todotasks => @tasks} and return
   end
 
   def projecttasks_auth
-    @tasks = ProjectTask.all
+    @tasks = ProjectTask.select('id, task_name, project_name, percent_complete, start_date, finish_date').order('created_at desc')
     render :json => { :projecttasks => @tasks} and return
   end
 
